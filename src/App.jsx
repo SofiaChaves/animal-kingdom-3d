@@ -39,12 +39,8 @@ function Model(props) {
     return <primitive {...props} object={scene} />;
 }
 
-function Caterpilar(props) {
-    return <Model path={'src/resources/caterpillar/scene.gltf'} {...props} />;
-}
-
 function HummingBird(props) {
-    return <Model path={'src/resources/hummingbird/scene.gltf'} {...props} />;
+    return <Model path={'/hummingbird/scene.gltf'} {...props} />;
 }
 
 function App() {
