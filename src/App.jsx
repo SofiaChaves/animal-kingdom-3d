@@ -45,7 +45,7 @@ function HummingBird(props) {
 
 function App() {
     return (
-        <div className="w-screen h-screen bg-gradient-to-t from-orange-100 to-white">
+        <div className="w-screen h-screen bg-gradient-to-t to-white from-slate-100">
             <div className="absolute w-screen h-screen z-10">
                 <Canvas
                     camera={{
@@ -63,7 +63,7 @@ function App() {
                     />
                     {/* <axesHelper args={[10]} /> */}
                     <Suspense fallback={null}>
-                        <HummingBird position={[0, 0, 0]} />
+                        <HummingBird />
                     </Suspense>
                     <EffectComposer>
                         <Bloom
