@@ -45,7 +45,7 @@ function HummingBird(props) {
 
 function App() {
     return (
-        <div className="w-screen h-screen bg-gradient-to-t to-white from-slate-100">
+        <div className="w-screen h-screen bg-gradient-to-t to-white from-slate-200">
             <div className="absolute w-screen h-screen z-10">
                 <Canvas
                     camera={{
