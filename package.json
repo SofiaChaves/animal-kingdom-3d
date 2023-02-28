@@ -8,6 +8,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@ashthornton/asscroll": "^2.0.11",
         "@react-three/drei": "^9.56.27",
         "@react-three/fiber": "^8.11.5",
         "@react-three/postprocessing": "^2.7.0",
