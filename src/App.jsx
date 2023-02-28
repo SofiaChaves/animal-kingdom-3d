@@ -5,6 +5,7 @@ import {
     EffectComposer,
     HueSaturation,
 } from '@react-three/postprocessing';
+import { motion } from 'framer-motion';
 import { Suspense } from 'react';
 import * as THREE from 'three';
 
@@ -82,17 +83,22 @@ function App() {
                     <CameraControls />
                 </Canvas>
             </div>
-
-            <div className="pt-96 pl-24 z-20 space-y-7 max-w-fit">
-                <h1 className="text-7xl uppercase font-black">
-                    Animal Kingdom
-                </h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt
-                    <br /> ut labore et dolore magna aliqua.
-                </p>
-            </div>
+            <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
+                <div className="pt-96 pl-24 z-20 space-y-7 max-w-fit">
+                    <h1 className="text-7xl uppercase font-black">
+                        Animal Kingdom
+                    </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt
+                        <br /> ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </motion.div>
         </div>
     );
 }
