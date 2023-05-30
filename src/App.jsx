@@ -1,5 +1,4 @@
-import { CameraControls, useGLTF } from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import {
     Bloom,
     EffectComposer,
@@ -7,45 +6,11 @@ import {
 } from '@react-three/postprocessing';
 import { motion } from 'framer-motion';
 import { Suspense } from 'react';
-import * as THREE from 'three';
+import { HummingBird } from './components/HummingBird';
 
-function Model(props) {
-    const { scene, animations } = useGLTF(props.path);
-
-    // Here's the animation part
-    // *************************
-    let mixer;
-    if (animations.length) {
-        mixer = new THREE.AnimationMixer(scene);
-        animations.forEach((clip) => {
-            const action = mixer.clipAction(clip);
-            action.play();
-        });
-    }
-
-    useFrame((state, delta) => {
-        mixer?.update(delta * 1);
-    });
-    // *************************
-
-    scene.traverse((child) => {
-        if (child.isMesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
-            child.material.side = THREE.FrontSide;
-        }
-    });
-
-    return <primitive {...props} object={scene} />;
-}
-
-function HummingBird(props) {
-    return <Model path={'/hummingbird/scene.gltf'} {...props} />;
-}
-
-function App() {
+function HummingBirdCanvas() {
     return (
-        <div className="w-screen h-screen bg-gradient-to-t to-white from-slate-200">
+        <div className="w-screen h-screen relative">
             <div className="absolute w-screen h-screen z-10">
                 <Canvas
                     camera={{
@@ -76,15 +41,15 @@ function App() {
                             saturation={0.5} // saturation in radians
                         />
                     </EffectComposer>
-                    <CameraControls />
+                    {/* <CameraControls /> */}
                 </Canvas>
             </div>
             <motion.div
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 3 }}
             >
-                <div className="pt-96 pl-24 z-20 space-y-7 max-w-fit">
+                <div className="h-screen w-screen flex flex-col items-start justify-center pl-24 z-20 space-y-7 max-w-fit">
                     <h1 className="text-7xl uppercase font-black">
                         Animal Kingdom
                     </h1>
@@ -95,6 +60,15 @@ function App() {
                     </p>
                 </div>
             </motion.div>
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <HummingBirdCanvas />
+            <HummingBirdCanvas />
         </div>
     );
 }
